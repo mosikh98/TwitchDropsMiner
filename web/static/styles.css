@@ -1,4 +1,6 @@
-/* Global Styles */
+/* ==========================================================================
+   Twitch Drops Miner — Design System
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -6,61 +8,167 @@
 }
 
 :root {
-    --bg-primary: #ffffff;
-    --bg-secondary: #f5f5f5;
+    /* Surfaces */
+    --bg-primary: #f3f4f8;
+    --bg-secondary: #e9eaf2;
     --bg-panel: #ffffff;
-    --text-primary: #333333;
-    --text-secondary: #666666;
-    --border-color: #dddddd;
+    --bg-tertiary: #eef0f7;
+    --bg-elevated: #ffffff;
+
+    /* Text */
+    --text-primary: #1c1e29;
+    --text-secondary: #64687a;
+    --text-muted: #9296a8;
+
+    /* Borders */
+    --border-color: #e1e3ee;
+    --border-strong: #cdd0e0;
+
+    /* Brand + semantic */
     --accent-color: #9146ff;
-    --success-color: #00c853;
-    --warning-color: #ffa726;
-    --error-color: #f44336;
-    --progress-bg: #e0e0e0;
+    --accent-color-hover: #7c3aed;
+    --accent-soft: rgba(145, 70, 255, 0.12);
+    --accent-gradient: linear-gradient(135deg, #a970ff 0%, #7c3aed 100%);
+    --success-color: #16c784;
+    --success-soft: rgba(22, 199, 132, 0.12);
+    --warning-color: #f5a524;
+    --warning-soft: rgba(245, 165, 36, 0.14);
+    --error-color: #f5455c;
+    --error-soft: rgba(245, 69, 92, 0.12);
+    --info-color: #3ea6ff;
+    --progress-bg: #e2e4f0;
+
+    /* Elevation */
+    --shadow-xs: 0 1px 2px rgba(20, 20, 40, 0.04);
+    --shadow-sm: 0 2px 6px rgba(20, 20, 40, 0.06);
+    --shadow-md: 0 6px 20px rgba(20, 20, 40, 0.08);
+    --shadow-lg: 0 16px 40px rgba(20, 20, 40, 0.14);
+    --shadow-accent: 0 8px 20px rgba(145, 70, 255, 0.25);
+
+    /* Radii */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-pill: 999px;
+
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body.dark-mode {
-    --bg-primary: #1a1a1a;
-    --bg-secondary: #2a2a2a;
-    --bg-panel: #2a2a2a;
-    --text-primary: #e0e0e0;
-    --text-secondary: #a0a0a0;
-    --border-color: #444444;
+    --bg-primary: #101119;
+    --bg-secondary: #171825;
+    --bg-panel: #1a1c2b;
+    --bg-tertiary: #212335;
+    --bg-elevated: #232538;
+
+    --text-primary: #eef0fb;
+    --text-secondary: #a3a6bd;
+    --text-muted: #73778f;
+
+    --border-color: #2b2d42;
+    --border-strong: #383b57;
+
+    --accent-color: #a970ff;
+    --accent-color-hover: #bd8cff;
+    --accent-soft: rgba(169, 112, 255, 0.16);
+    --accent-gradient: linear-gradient(135deg, #b083ff 0%, #8b5cf6 100%);
+    --success-color: #2fe0a0;
+    --success-soft: rgba(47, 224, 160, 0.14);
+    --warning-color: #ffb84d;
+    --warning-soft: rgba(255, 184, 77, 0.16);
+    --error-color: #ff5c72;
+    --error-soft: rgba(255, 92, 114, 0.14);
+    --info-color: #4fb6ff;
+    --progress-bg: #262941;
+
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.25);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+    --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.5);
+    --shadow-accent: 0 10px 24px rgba(169, 112, 255, 0.3);
+}
+
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-strong) transparent;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background-color: var(--bg-primary);
+    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.6;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: var(--radius-pill);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+    background-clip: padding-box;
 }
 
 .container {
-    max-width: 1400px;
+    max-width: 1440px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 24px;
 }
 
-/* Header */
+h1, h2, h3 {
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+a {
+    color: var(--accent-color);
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
 header {
     background: var(--bg-panel);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 20px;
+    border-radius: var(--radius-lg);
+    padding: 22px 26px;
     margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
 }
 
 .header-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
 header h1 {
     margin: 0;
-    color: var(--accent-color);
+    font-size: 1.6em;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.02em;
 }
 
 .header-controls {
@@ -73,23 +181,23 @@ header h1 {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 14px;
-    color: var(--text-primary);
+    font-size: 13px;
+    color: var(--text-secondary);
 }
 
 .language-selector span {
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .language-selector select {
-    padding: 6px 10px;
+    padding: 7px 12px;
     border: 1px solid var(--border-color);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     background: var(--bg-secondary);
     color: var(--text-primary);
-    font-size: 14px;
+    font-size: 13px;
     cursor: pointer;
-    transition: border-color 0.2s;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .language-selector select:hover {
@@ -99,39 +207,53 @@ header h1 {
 .language-selector select:focus {
     outline: none;
     border-color: var(--accent-color);
-    box-shadow: 0 0 0 2px rgba(145, 70, 255, 0.2);
+    box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
 .status-bar {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    font-size: 14px;
+    font-size: 13px;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+#status-text {
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-right: auto;
 }
 
 #connection-indicator {
-    font-weight: bold;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: var(--radius-pill);
+    font-size: 12px;
+    background: var(--bg-secondary);
 }
 
 #connection-indicator.connected {
     color: var(--success-color);
+    background: var(--success-soft);
 }
 
 #connection-indicator.disconnected {
     color: var(--error-color);
+    background: var(--error-soft);
 }
 
 .proxy-badge {
-    background: #4a90e2;
+    background: var(--info-color);
     color: white;
-    padding: 2px 8px;
-    border-radius: 4px;
+    padding: 4px 10px;
+    border-radius: var(--radius-pill);
     font-size: 11px;
-    font-weight: bold;
+    font-weight: 700;
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-xs);
 }
 
 .full-width {
@@ -140,7 +262,7 @@ header h1 {
 
 .help-text-inline {
     display: block;
-    margin-top: 4px;
+    margin-top: 6px;
     color: var(--text-secondary);
     font-size: 12px;
 }
@@ -156,23 +278,26 @@ header h1 {
 }
 
 .secondary-btn {
-    padding: 8px 12px;
-    background-color: var(--secondary-bg);
+    padding: 9px 14px;
+    background-color: var(--bg-secondary);
     border: 1px solid var(--border-color);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     color: var(--text-primary);
     cursor: pointer;
-    transition: background-color 0.2s;
+    font-weight: 600;
+    transition: all var(--transition-fast);
 }
 
 .secondary-btn:hover {
-    background-color: var(--hover-bg);
+    background-color: var(--bg-tertiary);
+    border-color: var(--border-strong);
+    transform: translateY(-1px);
 }
 
 .verify-result {
-    margin-top: 4px;
+    margin-top: 6px;
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .verify-result.success {
@@ -187,33 +312,42 @@ header h1 {
     color: var(--text-secondary);
 }
 
-/* Tabs */
+/* ==========================================================================
+   Tabs
+   ========================================================================== */
 .tabs {
     display: flex;
-    gap: 5px;
+    gap: 6px;
     margin-bottom: 20px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 6px;
+    box-shadow: var(--shadow-xs);
 }
 
 .tab-button {
     flex: 1;
-    padding: 12px;
-    background: var(--bg-panel);
-    border: 1px solid var(--border-color);
-    border-radius: 8px 8px 0 0;
+    padding: 11px;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
     cursor: pointer;
-    font-size: 16px;
-    color: var(--text-primary);
-    transition: background 0.2s;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
 }
 
 .tab-button:hover {
     background: var(--bg-secondary);
+    color: var(--text-primary);
 }
 
 .tab-button.active {
-    background: var(--accent-color);
+    background: var(--accent-gradient);
     color: white;
-    border-color: var(--accent-color);
+    box-shadow: var(--shadow-accent);
 }
 
 /* Tab Content */
@@ -223,22 +357,38 @@ header h1 {
 
 .tab-content.active {
     display: block;
+    animation: fadeIn 0.25s ease;
 }
 
-/* Panels */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   Panels
+   ========================================================================== */
 .panel {
     background: var(--bg-panel);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius-lg);
+    padding: 22px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.panel:hover {
+    box-shadow: var(--shadow-md);
 }
 
 .panel h2 {
-    margin-bottom: 15px;
-    font-size: 18px;
-    border-bottom: 2px solid var(--accent-color);
-    padding-bottom: 8px;
+    margin-bottom: 16px;
+    font-size: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 /* Main Tab Grid */
@@ -273,140 +423,172 @@ header h1 {
     grid-row: 3;
 }
 
-/* Login */
+/* ==========================================================================
+   Login
+   ========================================================================== */
 #login-form input {
     display: block;
     width: 100%;
-    padding: 10px;
+    padding: 11px 14px;
     margin-bottom: 10px;
     border: 1px solid var(--border-color);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     background: var(--bg-secondary);
     color: var(--text-primary);
+    font-size: 14px;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+#login-form input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
 #login-form button,
 #oauth-confirm {
     width: 100%;
-    padding: 12px;
-    background: var(--accent-color);
+    padding: 13px;
+    background: var(--accent-gradient);
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 15px;
+    font-weight: 700;
+    box-shadow: var(--shadow-accent);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 #login-form button:hover,
 #oauth-confirm:hover {
-    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 26px rgba(145, 70, 255, 0.32);
+}
+
+#login-form button:active,
+#oauth-confirm:active {
+    transform: translateY(0);
 }
 
 .oauth-code {
     font-size: 32px;
-    font-weight: bold;
+    font-weight: 800;
     text-align: center;
-    padding: 20px;
+    padding: 22px;
     background: var(--bg-secondary);
-    border-radius: 8px;
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius-md);
     margin: 15px 0;
-    letter-spacing: 4px;
+    letter-spacing: 6px;
+    color: var(--accent-color);
 }
 
-/* Drop Progress */
+/* ==========================================================================
+   Drop Progress
+   ========================================================================== */
 .drop-name {
-    font-weight: bold;
+    font-weight: 700;
     font-size: 16px;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 }
 
 .drop-game {
     color: var(--text-secondary);
-    margin-bottom: 15px;
+    margin-bottom: 16px;
+    font-size: 13px;
 }
 
 .drop-campaign-link {
-    color: #0066cc;
+    color: var(--info-color);
     text-decoration: none;
-    transition: all 0.2s;
+    transition: all var(--transition-fast);
     cursor: pointer;
 }
 
 .drop-campaign-link:hover {
-    color: #0052a3;
     text-decoration: underline;
 }
 
 .progress-bar {
     width: 100%;
-    height: 30px;
+    height: 26px;
     background: var(--progress-bg);
-    border-radius: 15px;
+    border-radius: var(--radius-pill);
     overflow: hidden;
     margin-bottom: 10px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--accent-color), var(--success-color));
-    transition: width 0.3s ease;
+    background: var(--accent-gradient);
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-weight: bold;
+    font-weight: 700;
+    font-size: 12px;
 }
 
 .progress-text {
     text-align: center;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: 500;
 }
 
 .progress-time {
     text-align: center;
     color: var(--text-secondary);
     font-size: 12px;
+    margin-top: 2px;
 }
 
-/* Console Output */
+/* ==========================================================================
+   Console Output
+   ========================================================================== */
 .console-output {
     height: 400px;
     overflow-y: auto;
-    font-family: 'Courier New', monospace;
+    font-family: "Cascadia Code", "Fira Code", "Courier New", monospace;
     font-size: 12px;
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
-    border-radius: 4px;
-    padding: 10px;
+    border-radius: var(--radius-sm);
+    padding: 12px;
 }
 
 .console-output div {
-    margin-bottom: 2px;
+    margin-bottom: 3px;
+    padding: 2px 4px;
+    border-radius: 4px;
 }
 
-/* Channels List */
+/* ==========================================================================
+   Channels List
+   ========================================================================== */
 .channels-list {
     height: 400px;
     overflow-y: auto;
+    padding-right: 2px;
 }
 
-/* Game Group Header */
 .game-group-header {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px;
+    padding: 12px 14px;
     margin-bottom: 8px;
     margin-top: 12px;
-    background: linear-gradient(135deg, var(--accent-color) 0%, rgba(145, 70, 255, 0.7) 100%);
-    border-radius: 8px;
+    background: var(--accent-gradient);
+    border-radius: var(--radius-md);
     color: white;
-    font-weight: bold;
+    font-weight: 700;
     position: sticky;
     top: 0;
     z-index: 10;
-    box-shadow: 0 2px 8px rgba(145, 70, 255, 0.3);
+    box-shadow: var(--shadow-accent);
 }
 
 .game-group-header:first-child {
@@ -416,57 +598,65 @@ header h1 {
 .game-icon {
     width: 40px;
     height: 53px;
-    border-radius: 4px;
+    border-radius: 6px;
     object-fit: cover;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
 .game-group-info {
     flex: 1;
+    min-width: 0;
 }
 
 .game-group-name {
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 15px;
+    font-weight: 700;
     margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .game-group-stats {
     font-size: 12px;
     opacity: 0.9;
-    font-weight: normal;
+    font-weight: 500;
 }
 
 .channel-item {
-    padding: 12px;
+    padding: 12px 14px;
     margin-bottom: 8px;
     margin-left: 16px;
     background: var(--bg-secondary);
-    border: 2px solid var(--border-color);
-    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--border-color);
+    border-radius: var(--radius-sm);
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all var(--transition-fast);
 }
 
 .channel-item:hover {
     border-color: var(--accent-color);
+    transform: translateX(2px);
 }
 
 .channel-item.watching {
-    border-color: var(--success-color);
-    background: rgba(145, 70, 255, 0.1);
+    border-color: var(--accent-color);
+    border-left-color: var(--accent-color);
+    background: var(--accent-soft);
+    box-shadow: var(--shadow-xs);
 }
 
 .channel-item.online {
-    border-left: 4px solid var(--success-color);
+    border-left: 3px solid var(--success-color);
 }
 
 .channel-item.offline {
-    opacity: 0.6;
+    opacity: 0.55;
 }
 
 .channel-name {
-    font-weight: bold;
+    font-weight: 700;
     font-size: 14px;
 }
 
@@ -478,29 +668,34 @@ header h1 {
 
 .channel-badge {
     display: inline-block;
-    padding: 2px 6px;
-    border-radius: 3px;
+    padding: 2px 8px;
+    border-radius: var(--radius-pill);
     font-size: 10px;
-    margin-left: 5px;
+    font-weight: 700;
+    margin-left: 6px;
+    letter-spacing: 0.02em;
 }
 
 .channel-badge.drops {
-    background: var(--success-color);
-    color: white;
+    background: var(--success-soft);
+    color: var(--success-color);
 }
 
 .channel-badge.acl {
-    background: var(--accent-color);
-    color: white;
+    background: var(--accent-soft);
+    color: var(--accent-color);
 }
 
-/* Inventory Filters */
+/* ==========================================================================
+   Inventory Filters
+   ========================================================================== */
 .inventory-filters {
     margin-bottom: 20px;
-    padding: 15px;
+    padding: 16px 18px;
     background: var(--bg-panel);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
 }
 
 .filter-controls {
@@ -512,7 +707,7 @@ header h1 {
 .filter-checkboxes {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 8px;
     align-items: center;
 }
 
@@ -522,16 +717,32 @@ header h1 {
     gap: 6px;
     cursor: pointer;
     user-select: none;
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+    background: var(--bg-secondary);
+    border: 1px solid transparent;
+    transition: all var(--transition-fast);
+}
+
+.filter-checkbox:hover {
+    border-color: var(--border-strong);
+}
+
+.filter-checkbox:has(input:checked) {
+    background: var(--accent-soft);
+    border-color: var(--accent-color);
 }
 
 .filter-checkbox input[type="checkbox"] {
     cursor: pointer;
-    width: 16px;
-    height: 16px;
+    width: 15px;
+    height: 15px;
+    accent-color: var(--accent-color);
 }
 
 .filter-checkbox span {
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: 500;
     color: var(--text-primary);
 }
 
@@ -559,16 +770,18 @@ header h1 {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 4px 8px;
-    background: var(--accent-color);
+    padding: 5px 10px;
+    background: var(--accent-gradient);
     color: white;
-    border-radius: 16px;
-    font-size: 13px;
-    transition: all 0.2s;
+    border-radius: var(--radius-pill);
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: var(--shadow-xs);
+    transition: all var(--transition-fast);
 }
 
 .game-tag:hover {
-    background: #7d39e0;
+    box-shadow: var(--shadow-sm);
 }
 
 .game-tag-name {
@@ -576,10 +789,10 @@ header h1 {
 }
 
 .game-tag-remove {
-    background: none;
+    background: rgba(255, 255, 255, 0.15);
     border: none;
     color: white;
-    font-size: 18px;
+    font-size: 15px;
     line-height: 1;
     cursor: pointer;
     padding: 0;
@@ -590,21 +803,28 @@ header h1 {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    transition: background 0.2s;
+    transition: background var(--transition-fast);
 }
 
 .game-tag-remove:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.3);
 }
 
 #inventory-game-search {
     width: 100%;
-    padding: 10px;
+    padding: 10px 14px;
     border: 1px solid var(--border-color);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     background: var(--bg-secondary);
     color: var(--text-primary);
     font-size: 14px;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+#inventory-game-search:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
 .game-dropdown-list {
@@ -614,13 +834,13 @@ header h1 {
     right: 0;
     max-height: 300px;
     overflow-y: auto;
-    background: var(--bg-panel);
+    background: var(--bg-elevated);
     border: 1px solid var(--border-color);
-    border-radius: 4px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
     z-index: 1000;
     display: none;
-    margin-top: 4px;
+    margin-top: 6px;
 }
 
 .dropdown-item {
@@ -629,7 +849,7 @@ header h1 {
     gap: 10px;
     padding: 10px 12px;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: background var(--transition-fast);
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -644,9 +864,10 @@ header h1 {
 
 .dropdown-item input[type="checkbox"] {
     cursor: pointer;
-    width: 16px;
-    height: 16px;
+    width: 15px;
+    height: 15px;
     margin: 0;
+    accent-color: var(--accent-color);
 }
 
 .dropdown-item label {
@@ -669,7 +890,9 @@ header h1 {
     background: none;
 }
 
-/* Inventory - card view (default) */
+/* ==========================================================================
+   Inventory — card view (default)
+   ========================================================================== */
 .inventory-grid {
     column-width: 350px;
     column-gap: 20px;
@@ -678,11 +901,17 @@ header h1 {
 .campaign-card {
     background: var(--bg-panel);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
     break-inside: avoid;
     margin-bottom: 20px;
+    transition: box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.campaign-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
 }
 
 .campaign-info {
@@ -691,7 +920,7 @@ header h1 {
     flex-direction: column;
 }
 
-/* Inventory - list view (each campaign as a horizontal row) */
+/* Inventory — list view (each campaign as a horizontal row) */
 .inventory-grid.list-view {
     display: flex;
     flex-direction: column;
@@ -704,6 +933,10 @@ header h1 {
     margin-bottom: 0;
 }
 
+.inventory-grid.list-view .campaign-card:hover {
+    transform: none;
+}
+
 .inventory-grid.list-view .campaign-info {
     flex: 0 0 320px;
     min-width: 0;
@@ -712,7 +945,7 @@ header h1 {
 }
 
 .campaign-header {
-    padding: 15px;
+    padding: 16px;
     background: var(--bg-secondary);
 }
 
@@ -720,8 +953,8 @@ header h1 {
     display: flex;
     align-items: center;
     gap: 12px;
-    font-weight: bold;
-    font-size: 16px;
+    font-weight: 700;
+    font-size: 15px;
 }
 
 .campaign-game .game-icon {
@@ -731,15 +964,15 @@ header h1 {
 }
 
 .campaign-name {
-    font-size: 14px;
+    font-size: 13px;
     color: var(--text-secondary);
 }
 
 .campaign-name-link {
-    font-size: 14px;
-    color: #0066cc;
+    font-size: 13px;
+    color: var(--info-color);
     text-decoration: none;
-    transition: all 0.2s;
+    transition: all var(--transition-fast);
     cursor: pointer;
     display: inline-flex;
     align-items: center;
@@ -747,7 +980,6 @@ header h1 {
 }
 
 .campaign-name-link:hover {
-    color: #0052a3;
     text-decoration: underline;
 }
 
@@ -759,76 +991,75 @@ header h1 {
 .campaign-badge {
     position: absolute;
     right: 15px;
+    top: 15px;
     padding: 4px 10px;
-    border-radius: 4px;
+    border-radius: var(--radius-pill);
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all var(--transition-fast);
     z-index: 10;
 }
 
 .campaign-badge.linked {
-    background: rgba(0, 200, 83, 0.15);
+    background: var(--success-soft);
     color: var(--success-color);
-    border: 1px solid rgba(0, 200, 83, 0.3);
+    border: 1px solid transparent;
     cursor: default;
 }
 
 .campaign-badge.not-linked {
     background: var(--warning-color);
     color: white;
-    box-shadow: 0 2px 4px rgba(255, 167, 38, 0.3);
+    box-shadow: 0 2px 8px rgba(245, 165, 36, 0.35);
 }
 
 .campaign-badge.not-linked:hover {
-    background: #ff9800;
     transform: translateY(-1px);
-    box-shadow: 0 3px 6px rgba(255, 167, 38, 0.4);
+    box-shadow: 0 4px 12px rgba(245, 165, 36, 0.4);
 }
 
 .link-account-btn {
     margin-top: 8px;
-    padding: 8px 16px;
+    padding: 9px 16px;
     background: var(--warning-color);
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s;
-    box-shadow: 0 2px 4px rgba(255, 167, 38, 0.3);
+    transition: all var(--transition-fast);
+    box-shadow: 0 2px 8px rgba(245, 165, 36, 0.3);
     width: 100%;
 }
 
 .link-account-btn:hover {
-    background: #ff9800;
     transform: translateY(-1px);
-    box-shadow: 0 3px 6px rgba(255, 167, 38, 0.4);
+    box-shadow: 0 4px 12px rgba(245, 165, 36, 0.4);
 }
 
 .link-account-btn:active {
     transform: translateY(0);
-    box-shadow: 0 1px 2px rgba(255, 167, 38, 0.3);
 }
 
 .campaign-status {
-    padding: 10px 15px;
+    padding: 10px 16px;
     font-size: 12px;
     display: flex;
     justify-content: space-between;
+    color: var(--text-secondary);
 }
 
 .campaign-timing {
-    padding: 5px 15px 10px;
+    padding: 4px 16px 12px;
     font-size: 11px;
-    color: var(--text-secondary);
+    color: var(--text-muted);
     font-style: italic;
 }
 
 .campaign-drops {
-    padding: 15px;
+    padding: 14px 16px 16px;
 }
 
 .inventory-grid.list-view .campaign-drops {
@@ -840,7 +1071,6 @@ header h1 {
     align-content: start;
 }
 
-
 .empty-message-small {
     color: var(--text-secondary);
     font-style: italic;
@@ -849,7 +1079,9 @@ header h1 {
     grid-column: 1 / -1;
 }
 
-/* Wanted Items Tree / Groups */
+/* ==========================================================================
+   Wanted Items Tree / Groups
+   ========================================================================== */
 #wanted-items-list {
     display: flex;
     flex-wrap: wrap;
@@ -858,36 +1090,35 @@ header h1 {
 
 .wanted-game-group {
     flex: min-content;
-    /* Grow, shrink, basis */
-    min-width: 0;
-    /* Fix for flex item overflow */
+    min-width: 280px;
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     margin-bottom: 20px;
     break-inside: avoid;
     overflow: hidden;
     position: relative;
+    box-shadow: var(--shadow-xs);
 }
 
 .wanted-game-header {
-    padding: 10px 15px;
+    padding: 11px 15px;
     background: var(--bg-panel);
     border-bottom: 1px solid var(--border-color);
     font-weight: 700;
-    font-size: 15px;
+    font-size: 14px;
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
 .wanted-game-index {
-    background: var(--accent-color);
+    background: var(--accent-gradient);
     color: white;
     font-size: 11px;
     font-weight: 700;
-    padding: 2px 6px;
-    border-radius: 4px;
+    padding: 2px 7px;
+    border-radius: var(--radius-sm);
     min-width: 20px;
     text-align: center;
 }
@@ -896,8 +1127,9 @@ header h1 {
     width: 30px;
     height: 40px;
     object-fit: cover;
-    border-radius: 3px;
-    background: #000;
+    border-radius: 5px;
+    background: var(--bg-secondary);
+    box-shadow: var(--shadow-xs);
 }
 
 .wanted-campaign-list {
@@ -911,19 +1143,16 @@ header h1 {
 .wanted-card {
     background: var(--bg-panel);
     border: 1px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     overflow: hidden;
     position: relative;
 }
 
 .wanted-card-header {
     padding: 8px 12px;
-    background: var(--bg-tertiary, #262626);
-    /* Slightly darker/different than panel */
+    background: var(--bg-tertiary);
     border-bottom: 1px solid var(--border-color);
 }
-
-/* Removing old wanted-card styles that are handled by group header now */
 
 .wanted-card-campaign-link {
     font-size: 12px;
@@ -933,6 +1162,7 @@ header h1 {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-weight: 600;
 }
 
 .wanted-card-campaign-link:hover {
@@ -950,32 +1180,35 @@ header h1 {
     flex-wrap: wrap;
     align-items: center;
     gap: 6px;
-    padding: 4px;
+    padding: 6px 8px;
     background: var(--bg-secondary);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
 }
 
 .wanted-drop-name {
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text-secondary);
 }
 
 .wanted-benefit-pill {
-    background: rgba(145, 70, 255, 0.15);
+    background: var(--accent-soft);
     color: var(--accent-color);
-    padding: 1px 5px;
-    border-radius: 8px;
+    padding: 2px 7px;
+    border-radius: var(--radius-pill);
     font-size: 10px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
-
+/* ==========================================================================
+   Drops
+   ========================================================================== */
 .drop-item {
-    padding: 10px;
+    padding: 12px;
     margin-bottom: 8px;
     background: var(--bg-secondary);
-    border-radius: 4px;
-    border-left: 3px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--border-strong);
+    transition: opacity var(--transition-base), filter var(--transition-base);
 }
 
 .inventory-grid.list-view .drop-item {
@@ -984,16 +1217,17 @@ header h1 {
 
 .drop-item.claimed {
     border-left-color: var(--success-color);
-    opacity: 0.7;
+    opacity: 0.75;
 }
 
 .drop-item.active {
     border-left-color: var(--accent-color);
+    box-shadow: var(--shadow-xs);
 }
 
 .drop-item.ignored,
 .drop-item.skipped {
-    opacity: 0.55;
+    opacity: 0.5;
     filter: grayscale(0.55);
 }
 
@@ -1002,7 +1236,7 @@ header h1 {
 }
 
 .drop-item.skipped {
-    border-left-color: var(--text-secondary);
+    border-left-color: var(--text-muted);
 }
 
 .drop-policy-status {
@@ -1036,19 +1270,19 @@ header h1 {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 8px;
+    padding: 9px;
     background: var(--bg-panel);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     border: 1px solid var(--border-color);
 }
 
 .benefit-icon {
     width: 40px;
     height: 40px;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     object-fit: cover;
-    border: 2px solid var(--border-color);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-xs);
     flex-shrink: 0;
 }
 
@@ -1061,64 +1295,90 @@ header h1 {
 }
 
 .benefit-name {
-    font-weight: 500;
-    font-size: 14px;
+    font-weight: 600;
+    font-size: 13px;
     color: var(--text-primary);
 }
 
 .benefit-type {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--text-secondary);
     font-style: italic;
 }
 
-/* Settings */
+/* ==========================================================================
+   Settings
+   ========================================================================== */
 .settings-container {
-    max-width: 800px;
+    max-width: 820px;
 }
 
 .settings-section {
     background: var(--bg-panel);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 20px;
+    border-radius: var(--radius-lg);
+    padding: 22px;
     margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
 }
 
 .settings-section h2 {
-    margin-bottom: 15px;
+    margin-bottom: 16px;
+    font-size: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .settings-section label {
     display: block;
     margin-bottom: 15px;
+    font-size: 14px;
 }
 
 .settings-section input[type="checkbox"] {
     margin-right: 8px;
+    accent-color: var(--accent-color);
+    width: 15px;
+    height: 15px;
 }
 
 .settings-section select,
 .settings-section input[type="number"],
 .settings-section input[type="text"] {
-    padding: 8px;
+    padding: 8px 12px;
     border: 1px solid var(--border-color);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     background: var(--bg-secondary);
     color: var(--text-primary);
     margin-left: 10px;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.settings-section select:focus,
+.settings-section input[type="number"]:focus,
+.settings-section input[type="text"]:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
 .settings-section textarea {
     width: 100%;
     min-height: 110px;
-    padding: 10px;
+    padding: 12px;
     border: 1px solid var(--border-color);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     background: var(--bg-secondary);
     color: var(--text-primary);
     font: inherit;
     resize: vertical;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.settings-section textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
 .list-manager {
@@ -1130,30 +1390,32 @@ header h1 {
     max-height: 200px;
     overflow-y: auto;
     border: 1px solid var(--border-color);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     padding: 10px;
     margin-bottom: 10px;
     background: var(--bg-secondary);
 }
 
 .game-item {
-    padding: 8px;
-    margin-bottom: 5px;
+    padding: 9px 10px;
+    margin-bottom: 6px;
     background: var(--bg-panel);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border: 1px solid var(--border-color);
 }
 
 .game-item button {
-    padding: 4px 8px;
+    padding: 4px 10px;
     background: var(--error-color);
     color: white;
     border: none;
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     font-size: 12px;
+    font-weight: 600;
 }
 
 .action-button {
@@ -1161,29 +1423,36 @@ header h1 {
     margin-right: 10px;
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     font-size: 14px;
+    font-weight: 600;
     color: var(--text-primary);
-}
-
-.action-button.primary {
-    background: var(--accent-color);
-    color: white;
-    border-color: var(--accent-color);
+    transition: all var(--transition-fast);
 }
 
 .action-button:hover {
-    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
 }
 
-/* Help */
+.action-button.primary {
+    background: var(--accent-gradient);
+    color: white;
+    border-color: transparent;
+    box-shadow: var(--shadow-accent);
+}
+
+/* ==========================================================================
+   Help
+   ========================================================================== */
 .help-content {
-    max-width: 800px;
+    max-width: 820px;
     background: var(--bg-panel);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 30px;
+    box-shadow: var(--shadow-sm);
 }
 
 .help-content h2 {
@@ -1192,8 +1461,9 @@ header h1 {
 }
 
 .help-content h3 {
-    margin-top: 20px;
+    margin-top: 22px;
     margin-bottom: 10px;
+    font-size: 15px;
 }
 
 .help-content ul,
@@ -1204,11 +1474,13 @@ header h1 {
 
 .help-content li {
     margin-bottom: 8px;
+    color: var(--text-secondary);
 }
 
 .help-content a {
     color: var(--accent-color);
     text-decoration: none;
+    font-weight: 600;
 }
 
 .help-content a:hover {
@@ -1224,16 +1496,20 @@ header h1 {
 .help-links a {
     display: inline-block;
     padding: 10px 20px;
-    background: var(--accent-color);
+    background: var(--accent-gradient);
     color: white;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     margin-right: 10px;
+    font-weight: 600;
+    box-shadow: var(--shadow-accent);
 }
 
-/* Games to Watch Styles */
+/* ==========================================================================
+   Games to Watch
+   ========================================================================== */
 .help-text {
     color: var(--text-secondary);
-    font-size: 14px;
+    font-size: 13px;
     margin-bottom: 15px;
 }
 
@@ -1243,9 +1519,9 @@ header h1 {
 
 .games-filter input[type="text"] {
     width: 100%;
-    padding: 10px;
+    padding: 10px 14px;
     border: 1px solid var(--border-color);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     background: var(--bg-secondary);
     color: var(--text-primary);
     font-size: 14px;
@@ -1262,17 +1538,19 @@ header h1 {
     padding: 8px 16px;
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     font-size: 13px;
+    font-weight: 600;
     color: var(--text-primary);
-    transition: all 0.2s;
+    transition: all var(--transition-fast);
 }
 
 .small-btn:hover {
-    background: var(--accent-color);
+    background: var(--accent-gradient);
     color: white;
-    border-color: var(--accent-color);
+    border-color: transparent;
+    box-shadow: var(--shadow-accent);
 }
 
 .games-container {
@@ -1285,16 +1563,18 @@ header h1 {
 .selected-games,
 .available-games {
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     padding: 15px;
     background: var(--bg-secondary);
 }
 
 .selected-games h3,
 .available-games h3 {
-    font-size: 14px;
+    font-size: 13px;
     margin-bottom: 15px;
     color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 
 /* Sortable list for selected games */
@@ -1311,26 +1591,26 @@ header h1 {
     padding: 10px;
     margin-bottom: 8px;
     background: var(--bg-panel);
-    border: 2px solid var(--border-color);
-    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
     cursor: move;
-    transition: all 0.2s;
+    transition: all var(--transition-fast);
     user-select: none;
 }
 
 .sortable-item:hover {
     border-color: var(--accent-color);
-    background: rgba(145, 70, 255, 0.1);
+    background: var(--accent-soft);
 }
 
 .sortable-item.dragging {
     opacity: 0.5;
-    transform: scale(0.95);
+    transform: scale(0.96);
 }
 
 .drag-handle {
     font-size: 18px;
-    color: var(--text-secondary);
+    color: var(--text-muted);
     cursor: grab;
 }
 
@@ -1344,29 +1624,29 @@ header h1 {
     justify-content: center;
     width: 24px;
     height: 24px;
-    background: var(--accent-color);
+    background: var(--accent-gradient);
     color: white;
     border-radius: 50%;
     font-size: 12px;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .game-name {
     flex: 1;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .remove-btn {
-    padding: 4px 8px;
+    padding: 4px 9px;
     background: var(--error-color);
     color: white;
     border: none;
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     font-size: 14px;
-    font-weight: bold;
-    opacity: 0.8;
-    transition: opacity 0.2s;
+    font-weight: 700;
+    opacity: 0.85;
+    transition: opacity var(--transition-fast);
 }
 
 .remove-btn:hover {
@@ -1382,35 +1662,41 @@ header h1 {
 .game-checkbox {
     display: flex;
     align-items: center;
-    padding: 8px;
+    padding: 9px;
     margin-bottom: 5px;
     background: var(--bg-panel);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
-    transition: background 0.2s;
+    transition: background var(--transition-fast);
+    border: 1px solid transparent;
 }
 
 .game-checkbox:hover {
-    background: rgba(145, 70, 255, 0.1);
+    background: var(--accent-soft);
+    border-color: var(--accent-color);
 }
 
 .game-checkbox input[type="checkbox"] {
     margin-right: 10px;
     cursor: pointer;
+    accent-color: var(--accent-color);
 }
 
 .game-checkbox span {
     user-select: none;
 }
 
-/* Loading Overlay */
+/* ==========================================================================
+   Loading Overlay
+   ========================================================================== */
 .loading-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(10, 10, 20, 0.6);
+    backdrop-filter: blur(3px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1419,20 +1705,20 @@ header h1 {
 
 .loading-content {
     background: var(--bg-panel);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     padding: 40px;
     text-align: center;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-lg);
 }
 
 .loading-spinner {
-    width: 50px;
-    height: 50px;
+    width: 46px;
+    height: 46px;
     margin: 0 auto 20px;
     border: 4px solid var(--border-color);
     border-top-color: var(--accent-color);
     border-radius: 50%;
-    animation: spin 1s linear infinite;
+    animation: spin 0.9s linear infinite;
 }
 
 @keyframes spin {
@@ -1442,31 +1728,34 @@ header h1 {
 }
 
 #loading-message {
-    font-size: 16px;
+    font-size: 15px;
     color: var(--text-primary);
     margin-top: 10px;
+    font-weight: 500;
 }
 
-/* Manual Mode Styles */
+/* ==========================================================================
+   Manual Mode
+   ========================================================================== */
 .mode-badge {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 12px;
+    border-radius: var(--radius-pill);
     font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    margin-left: 10px;
-    transition: all 0.3s ease;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    transition: all var(--transition-base);
 }
 
 #auto-mode-badge {
-    background: rgba(145, 70, 255, 0.15);
+    background: var(--accent-soft);
     color: var(--accent-color);
     border: 1px solid var(--accent-color);
 }
 
 #manual-mode-badge {
-    background: rgba(255, 167, 38, 0.15);
+    background: var(--warning-soft);
     color: var(--warning-color);
     border: 1px solid var(--warning-color);
     animation: pulse 2s ease-in-out infinite;
@@ -1487,10 +1776,10 @@ header h1 {
 }
 
 .manual-mode-controls {
-    background: rgba(255, 167, 38, 0.1);
-    border: 2px solid var(--warning-color);
-    border-radius: 8px;
-    padding: 12px;
+    background: var(--warning-soft);
+    border: 1px solid var(--warning-color);
+    border-radius: var(--radius-md);
+    padding: 12px 14px;
     margin-bottom: 15px;
     display: flex;
     justify-content: space-between;
@@ -1500,7 +1789,7 @@ header h1 {
 
 .manual-mode-info {
     color: var(--text-primary);
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .manual-mode-info strong {
@@ -1512,23 +1801,25 @@ header h1 {
     background: var(--bg-panel);
     color: var(--text-primary);
     border: 1px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     font-size: 13px;
-    font-weight: 500;
-    transition: all 0.2s;
+    font-weight: 600;
+    transition: all var(--transition-fast);
     white-space: nowrap;
 }
 
 .exit-manual-btn:hover {
-    background: var(--accent-color);
+    background: var(--accent-gradient);
     color: white;
-    border-color: var(--accent-color);
+    border-color: transparent;
     transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(145, 70, 255, 0.3);
+    box-shadow: var(--shadow-accent);
 }
 
-/* Utilities */
+/* ==========================================================================
+   Utilities
+   ========================================================================== */
 .hidden {
     display: none !important;
 }
@@ -1539,7 +1830,94 @@ header h1 {
     padding: 40px;
 }
 
-/* Responsive */
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.footer {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    margin-top: 20px;
+    padding: 16px 22px;
+    font-size: 13px;
+    box-shadow: var(--shadow-sm);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-version {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-version span {
+    color: var(--text-secondary);
+}
+
+#current-version {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.update-indicator {
+    padding: 4px 10px;
+    background: var(--warning-color);
+    color: white;
+    border-radius: var(--radius-pill);
+    animation: pulse-opacity 2s infinite;
+}
+
+.update-indicator a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.update-indicator a:hover {
+    text-decoration: underline;
+}
+
+#latest-version {
+    font-weight: 600;
+}
+
+@keyframes pulse-opacity {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.footer-links {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-links a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color var(--transition-fast);
+}
+
+.footer-links a:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
 @media (max-width: 1024px) {
     .main-grid {
         grid-template-columns: 1fr;
@@ -1564,8 +1942,6 @@ header h1 {
         border-bottom: 1px solid var(--border-color);
     }
 
-    /* "Selected Games" / "Available Games" were still forced side-by-side here,
-       squeezing both panels to ~180px and wrapping their headings mid-word. */
     .games-container {
         grid-template-columns: 1fr;
     }
@@ -1573,11 +1949,11 @@ header h1 {
 
 @media (max-width: 768px) {
     .container {
-        padding: 10px;
+        padding: 12px;
     }
 
     header {
-        padding: 15px;
+        padding: 16px;
     }
 
     .header-top {
@@ -1587,7 +1963,7 @@ header h1 {
     }
 
     header h1 {
-        font-size: 1.4em;
+        font-size: 1.3em;
     }
 
     .header-controls {
@@ -1602,13 +1978,13 @@ header h1 {
 
     .tab-button {
         padding: 10px 6px;
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .panel,
     .settings-section,
     .inventory-filters {
-        padding: 15px;
+        padding: 16px;
     }
 
     .filter-controls {
@@ -1631,7 +2007,7 @@ header h1 {
 
 @media (max-width: 480px) {
     header h1 {
-        font-size: 1.2em;
+        font-size: 1.15em;
     }
 
     .language-selector {
@@ -1649,8 +2025,8 @@ header h1 {
 
     .oauth-code {
         font-size: 22px;
-        letter-spacing: 2px;
-        padding: 15px;
+        letter-spacing: 3px;
+        padding: 16px;
     }
 
     .tabs {
@@ -1661,9 +2037,6 @@ header h1 {
         flex: 1 1 40%;
     }
 
-    /* column-width switches to single-column below this anyway since no card
-       fits two 280px columns at this viewport, but drop the min width so a
-       narrower phone doesn't get a horizontal scrollbar from the column box. */
     .inventory-grid {
         column-width: auto;
     }
@@ -1675,85 +2048,4 @@ header h1 {
     #clear-filters-btn {
         width: 100%;
     }
-}
-
-/* Footer */
-.footer {
-    background: var(--bg-panel);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    margin-top: 20px;
-    padding: 15px 20px;
-    font-size: 13px;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.footer-version {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.footer-version span {
-    color: var(--text-secondary);
-}
-
-#current-version {
-    font-weight: 500;
-    color: var(--text-primary);
-}
-
-.update-indicator {
-    padding: 4px 10px;
-    background: var(--warning-color);
-    color: white;
-    border-radius: 4px;
-    animation: pulse 2s infinite;
-}
-
-.update-indicator a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.update-indicator a:hover {
-    text-decoration: underline;
-}
-
-#latest-version {
-    font-weight: 500;
-}
-
-@keyframes pulse {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.7;
-    }
-}
-
-.footer-links {
-    display: flex;
-    gap: 15px;
-}
-
-.footer-links a {
-    color: var(--accent-color);
-    text-decoration: none;
-    transition: color 0.2s;
-}
-
-.footer-links a:hover {
-    color: var(--text-primary);
-    text-decoration: underline;
 }
