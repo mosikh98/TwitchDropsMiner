@@ -9,9 +9,10 @@
 
 :root {
     /* Surfaces */
-    --bg-primary: #f3f4f8;
-    --bg-secondary: #e9eaf2;
-    --bg-panel: #ffffff;
+    --bg-primary: #eef0fa;
+    --bg-secondary: #e4e7f5;
+    --bg-panel: rgba(255, 255, 255, 0.72);
+    --bg-panel-solid: #ffffff;
     --bg-tertiary: #eef0f7;
     --bg-elevated: #ffffff;
 
@@ -21,8 +22,9 @@
     --text-muted: #9296a8;
 
     /* Borders */
-    --border-color: #e1e3ee;
-    --border-strong: #cdd0e0;
+    --border-color: rgba(28, 30, 41, 0.08);
+    --border-strong: rgba(28, 30, 41, 0.16);
+    --glass-highlight: rgba(255, 255, 255, 0.65);
 
     /* Brand + semantic */
     --accent-color: #9146ff;
@@ -40,39 +42,42 @@
 
     /* Elevation */
     --shadow-xs: 0 1px 2px rgba(20, 20, 40, 0.04);
-    --shadow-sm: 0 2px 6px rgba(20, 20, 40, 0.06);
-    --shadow-md: 0 6px 20px rgba(20, 20, 40, 0.08);
-    --shadow-lg: 0 16px 40px rgba(20, 20, 40, 0.14);
-    --shadow-accent: 0 8px 20px rgba(145, 70, 255, 0.25);
+    --shadow-sm: 0 2px 10px rgba(20, 20, 40, 0.06);
+    --shadow-md: 0 10px 30px rgba(30, 20, 60, 0.09);
+    --shadow-lg: 0 24px 60px rgba(30, 20, 60, 0.16);
+    --shadow-accent: 0 6px 16px rgba(124, 58, 237, 0.28);
 
     /* Radii */
     --radius-sm: 8px;
     --radius-md: 12px;
-    --radius-lg: 16px;
+    --radius-lg: 18px;
     --radius-pill: 999px;
 
+    --blur-glass: 22px;
     --transition-fast: 0.15s ease;
     --transition-base: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body.dark-mode {
-    --bg-primary: #101119;
-    --bg-secondary: #171825;
-    --bg-panel: #1a1c2b;
+    --bg-primary: #0a0912;
+    --bg-secondary: #14121f;
+    --bg-panel: rgba(26, 22, 41, 0.55);
+    --bg-panel-solid: #1a1c2b;
     --bg-tertiary: #212335;
     --bg-elevated: #232538;
 
-    --text-primary: #eef0fb;
-    --text-secondary: #a3a6bd;
-    --text-muted: #73778f;
+    --text-primary: #f1eefc;
+    --text-secondary: #aca8c4;
+    --text-muted: #7d7a93;
 
-    --border-color: #2b2d42;
-    --border-strong: #383b57;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.14);
+    --glass-highlight: rgba(255, 255, 255, 0.06);
 
-    --accent-color: #a970ff;
-    --accent-color-hover: #bd8cff;
-    --accent-soft: rgba(169, 112, 255, 0.16);
-    --accent-gradient: linear-gradient(135deg, #b083ff 0%, #8b5cf6 100%);
+    --accent-color: #b183ff;
+    --accent-color-hover: #c49dff;
+    --accent-soft: rgba(177, 131, 255, 0.18);
+    --accent-gradient: linear-gradient(135deg, #c49dff 0%, #8b5cf6 100%);
     --success-color: #2fe0a0;
     --success-soft: rgba(47, 224, 160, 0.14);
     --warning-color: #ffb84d;
@@ -80,13 +85,13 @@ body.dark-mode {
     --error-color: #ff5c72;
     --error-soft: rgba(255, 92, 114, 0.14);
     --info-color: #4fb6ff;
-    --progress-bg: #262941;
+    --progress-bg: #221f35;
 
-    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.25);
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
-    --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.5);
-    --shadow-accent: 0 10px 24px rgba(169, 112, 255, 0.3);
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.35);
+    --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.45);
+    --shadow-lg: 0 28px 64px rgba(0, 0, 0, 0.6);
+    --shadow-accent: 0 10px 24px rgba(177, 131, 255, 0.35);
 }
 
 html {
@@ -96,12 +101,28 @@ html {
 
 body {
     font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.6;
     font-size: 14px;
     -webkit-font-smoothing: antialiased;
     transition: background-color var(--transition-base), color var(--transition-base);
+    min-height: 100vh;
+    background-color: var(--bg-primary);
+    background-image:
+        radial-gradient(circle at 12% 8%, rgba(145, 70, 255, 0.16), transparent 40%),
+        radial-gradient(circle at 88% 15%, rgba(62, 166, 255, 0.13), transparent 42%),
+        radial-gradient(circle at 25% 92%, rgba(22, 199, 132, 0.08), transparent 40%),
+        radial-gradient(circle at 90% 88%, rgba(245, 165, 36, 0.08), transparent 38%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+body.dark-mode {
+    background-image:
+        radial-gradient(circle at 12% 8%, rgba(145, 70, 255, 0.28), transparent 42%),
+        radial-gradient(circle at 88% 12%, rgba(62, 166, 255, 0.16), transparent 42%),
+        radial-gradient(circle at 20% 95%, rgba(47, 224, 160, 0.10), transparent 40%),
+        radial-gradient(circle at 92% 90%, rgba(255, 184, 77, 0.10), transparent 38%);
 }
 
 ::-webkit-scrollbar {
@@ -145,6 +166,8 @@ a {
    ========================================================================== */
 header {
     background: var(--bg-panel);
+    backdrop-filter: blur(var(--blur-glass));
+    -webkit-backdrop-filter: blur(var(--blur-glass));
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
     padding: 22px 26px;
@@ -164,11 +187,23 @@ header {
 header h1 {
     margin: 0;
     font-size: 1.6em;
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
     letter-spacing: -0.02em;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-primary);
+}
+
+header h1 .app-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    background: var(--accent-gradient);
+    box-shadow: var(--shadow-accent);
+    font-size: 1.1rem;
 }
 
 .header-controls {
@@ -320,10 +355,14 @@ header h1 {
     gap: 6px;
     margin-bottom: 20px;
     background: var(--bg-panel);
+    backdrop-filter: blur(var(--blur-glass));
+    -webkit-backdrop-filter: blur(var(--blur-glass));
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
     padding: 6px;
     box-shadow: var(--shadow-xs);
+    position: relative;
+    isolation: isolate;
 }
 
 .tab-button {
@@ -336,7 +375,8 @@ header h1 {
     font-size: 14px;
     font-weight: 600;
     color: var(--text-secondary);
-    transition: all var(--transition-fast);
+    transition: background-color var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
+    position: relative;
 }
 
 .tab-button:hover {
@@ -347,7 +387,11 @@ header h1 {
 .tab-button.active {
     background: var(--accent-gradient);
     color: white;
-    box-shadow: var(--shadow-accent);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.35);
+}
+
+.tab-button.active:hover {
+    background: var(--accent-gradient);
 }
 
 /* Tab Content */
@@ -370,6 +414,8 @@ header h1 {
    ========================================================================== */
 .panel {
     background: var(--bg-panel);
+    backdrop-filter: blur(var(--blur-glass));
+    -webkit-backdrop-filter: blur(var(--blur-glass));
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
     padding: 22px;
@@ -390,6 +436,33 @@ header h1 {
     align-items: center;
     gap: 8px;
 }
+
+/* Contextual icon badges for section headers — CSS-only, no markup changes needed */
+.panel h2::before,
+.settings-section h2::before,
+.help-content > h2::before {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    background: var(--accent-soft);
+    font-size: 13px;
+    flex-shrink: 0;
+}
+
+.login-panel h2::before { content: "🔑"; }
+#progress-header::before { content: "📊"; }
+#console-header::before { content: "🖥️"; }
+#channels-header::before { content: "📡"; }
+#wanted-header::before { content: "🎯"; }
+#settings-general-header::before { content: "⚙️"; }
+#settings-benefits-header::before { content: "💎"; }
+#settings-drop-blacklist-header::before { content: "🚫"; }
+#settings-games-header::before { content: "🕹️"; }
+#settings-actions-header::before { content: "⚡"; }
+#help-about-header::before { content: "ℹ️"; }
 
 /* Main Tab Grid */
 .main-grid {
@@ -693,6 +766,8 @@ header h1 {
     margin-bottom: 20px;
     padding: 16px 18px;
     background: var(--bg-panel);
+    backdrop-filter: blur(var(--blur-glass));
+    -webkit-backdrop-filter: blur(var(--blur-glass));
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
@@ -900,6 +975,8 @@ header h1 {
 
 .campaign-card {
     background: var(--bg-panel);
+    backdrop-filter: blur(var(--blur-glass));
+    -webkit-backdrop-filter: blur(var(--blur-glass));
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
     overflow: hidden;
@@ -1104,6 +1181,8 @@ header h1 {
 .wanted-game-header {
     padding: 11px 15px;
     background: var(--bg-panel);
+    backdrop-filter: blur(var(--blur-glass));
+    -webkit-backdrop-filter: blur(var(--blur-glass));
     border-bottom: 1px solid var(--border-color);
     font-weight: 700;
     font-size: 14px;
@@ -1142,6 +1221,8 @@ header h1 {
 /* Wanted Cards (Nested inside Game Group) */
 .wanted-card {
     background: var(--bg-panel);
+    backdrop-filter: blur(var(--blur-glass));
+    -webkit-backdrop-filter: blur(var(--blur-glass));
     border: 1px solid var(--border-color);
     border-radius: var(--radius-sm);
     overflow: hidden;
@@ -1272,6 +1353,8 @@ header h1 {
     gap: 10px;
     padding: 9px;
     background: var(--bg-panel);
+    backdrop-filter: blur(var(--blur-glass));
+    -webkit-backdrop-filter: blur(var(--blur-glass));
     border-radius: var(--radius-sm);
     border: 1px solid var(--border-color);
 }
@@ -1315,6 +1398,8 @@ header h1 {
 
 .settings-section {
     background: var(--bg-panel);
+    backdrop-filter: blur(var(--blur-glass));
+    -webkit-backdrop-filter: blur(var(--blur-glass));
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
     padding: 22px;
@@ -1327,6 +1412,9 @@ header h1 {
     font-size: 16px;
     padding-bottom: 12px;
     border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .settings-section label {
@@ -1400,6 +1488,8 @@ header h1 {
     padding: 9px 10px;
     margin-bottom: 6px;
     background: var(--bg-panel);
+    backdrop-filter: blur(var(--blur-glass));
+    -webkit-backdrop-filter: blur(var(--blur-glass));
     border-radius: var(--radius-sm);
     display: flex;
     justify-content: space-between;
@@ -1449,6 +1539,8 @@ header h1 {
 .help-content {
     max-width: 820px;
     background: var(--bg-panel);
+    backdrop-filter: blur(var(--blur-glass));
+    -webkit-backdrop-filter: blur(var(--blur-glass));
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
     padding: 30px;
@@ -1458,6 +1550,9 @@ header h1 {
 .help-content h2 {
     color: var(--accent-color);
     margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .help-content h3 {
@@ -1591,6 +1686,8 @@ header h1 {
     padding: 10px;
     margin-bottom: 8px;
     background: var(--bg-panel);
+    backdrop-filter: blur(var(--blur-glass));
+    -webkit-backdrop-filter: blur(var(--blur-glass));
     border: 1px solid var(--border-color);
     border-radius: var(--radius-sm);
     cursor: move;
@@ -1665,6 +1762,8 @@ header h1 {
     padding: 9px;
     margin-bottom: 5px;
     background: var(--bg-panel);
+    backdrop-filter: blur(var(--blur-glass));
+    -webkit-backdrop-filter: blur(var(--blur-glass));
     border-radius: var(--radius-sm);
     cursor: pointer;
     transition: background var(--transition-fast);
@@ -1705,6 +1804,8 @@ header h1 {
 
 .loading-content {
     background: var(--bg-panel);
+    backdrop-filter: blur(var(--blur-glass));
+    -webkit-backdrop-filter: blur(var(--blur-glass));
     border-radius: var(--radius-lg);
     padding: 40px;
     text-align: center;
@@ -1799,6 +1900,8 @@ header h1 {
 .exit-manual-btn {
     padding: 8px 16px;
     background: var(--bg-panel);
+    backdrop-filter: blur(var(--blur-glass));
+    -webkit-backdrop-filter: blur(var(--blur-glass));
     color: var(--text-primary);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-sm);
@@ -1835,6 +1938,8 @@ header h1 {
    ========================================================================== */
 .footer {
     background: var(--bg-panel);
+    backdrop-filter: blur(var(--blur-glass));
+    -webkit-backdrop-filter: blur(var(--blur-glass));
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
     margin-top: 20px;
